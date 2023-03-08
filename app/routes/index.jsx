@@ -1,9 +1,12 @@
-
-
-function Index() {
-  return (
-    <div>Hola JuanMa Remix Minds!</div>
-  )
+export function meta() {
+  return {
+    title: 'GuitarLA - Home',
+    description: 'Guitarras de alta calidad',
+  };
 }
 
-export default Index
+function Index() {
+  return <div>Bienvenidos a GuitarLA</div>;
+}
+
+export default Index;

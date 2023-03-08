@@ -1,5 +1,9 @@
 import Navegacion from './navegacion';
 
+
+
+
+
 function Footer() {
   return (
     <footer className="footer">
