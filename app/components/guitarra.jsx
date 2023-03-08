@@ -1,7 +1,4 @@
-import React from 'react'
-
-export default function Guitarra() {
-  return (
-    <div>Guitarra</div>
-  )
+export default function Guitarra({ guitarra }) {
+  console.log(guitarra);
+  return <div>Guitarra</div>;
 }
