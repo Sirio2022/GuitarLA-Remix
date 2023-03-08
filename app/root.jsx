@@ -7,6 +7,7 @@ export const meta = () => ({
   charset: 'utf-8',
   title: 'GuitarLA - Remix',
   viewport: 'width=device-width,initial-scale=1',
+  description: 'GuitarLA - Remix',
 });
 
 export function links() {
