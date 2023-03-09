@@ -137,3 +137,28 @@ main {
 .footer .copyright {
     text-align: center;
 }
+
+.error {
+    color: red;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-align: center;
+    margin-top: 5rem;
+    font-size: larger;
+}
+
+/* Error principal links */
+.error-enlace {
+    display: block;
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.error-enlace:hover {
+    color: var(--primary);
+}
