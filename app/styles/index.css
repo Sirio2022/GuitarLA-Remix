@@ -162,3 +162,20 @@ main {
 .error-enlace:hover {
     color: var(--primary);
 }
+
+.enlace {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background-color: var(--black);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+.enlace:hover {
+    background-color: var(--primary);
+}
