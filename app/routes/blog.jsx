@@ -1,34 +1,13 @@
-import { useLoaderData } from '@remix-run/react';
-import ListadoPost from '~/components/listado-posts';
-import { getPosts } from '~/models/posts.server';
-import Styles from '~/styles/blog.css';
+import { Outlet } from '@remix-run/react';
 
-export function meta() {
-  return {
-    title: 'GuitarLA - Nuestro Blog',
-    description:
-      'GuitarLA - Nuestro Blog, donde encontrarás información sobre guitarras, amplificadores, pedales, etc.',
-  };
-}
+import Styles from '~/styles/blog.css';
 
 export function links() {
   return [{ rel: 'stylesheet', href: Styles }];
 }
 
-export async function loader() {
-  const posts = await getPosts();
-
-  return posts.data;
-}
-
 function Blog() {
-  const posts = useLoaderData();
-
-  return (
-    <main className="contnedor">
-      <ListadoPost posts={posts} />
-    </main>
-  );
+  return <Outlet />;
 }
 
 export default Blog;
