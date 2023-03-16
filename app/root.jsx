@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Meta,
   Links,
@@ -39,9 +40,34 @@ export function links() {
 }
 
 export default function App() {
+  const [carrito, setCarrito] = useState([]);
+
+  const agregarAlCarrito = (guitarra) => {
+    if (carrito.some((guitarraState) => guitarraState.id === guitarra.id)) {
+      // Actualizar cantidad
+      const nuevoCarrito = carrito.map((guitarraState) => {
+        if (guitarraState.id === guitarra.id) {
+          // Actualizar cantidad, (+=) suma la cantidad actual con la nueva
+          guitarraState.cantidad = guitarra.cantidad;
+        }
+        return guitarraState;
+      });
+      // Setear el nuevo carrito
+      setCarrito(nuevoCarrito);
+    } else {
+      // Nuevo producto
+      setCarrito([...carrito, guitarra]);
+    }
+  };
+
   return (
     <Document>
-      <Outlet />
+      <Outlet
+        context={{
+          agregarAlCarrito,
+          carrito,
+        }}
+      />
     </Document>
   );
 }

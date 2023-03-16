@@ -1,4 +1,6 @@
-import { useLoaderData } from '@remix-run/react';
+import { useState } from 'react';
+
+import { useLoaderData, useOutletContext } from '@remix-run/react';
 import { getGuitarra } from '~/models/guitarras.server';
 
 export async function loader({ params }) {
@@ -30,8 +32,29 @@ export function meta({ data }) {
 }
 
 function Guitarra() {
+  const { agregarAlCarrito } = useOutletContext();
+
+  const [cantidad, setCantidad] = useState(0);
+
   const guitarra = useLoaderData();
   const { precio, imagen, descripcion, nombre } = guitarra.data[0].attributes;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (cantidad === 0) {
+      alert('Debe seleccionar una cantidad');
+      return;
+    }
+
+    const guitarraSeleccionada = {
+      id: guitarra.data[0].id,
+      imagen: imagen.data.attributes.url,
+      nombre,
+      precio,
+      cantidad,
+    };
+    agregarAlCarrito(guitarraSeleccionada);
+  };
 
   return (
     <div className="guitarra">
@@ -45,9 +68,9 @@ function Guitarra() {
         <p className="texto">{descripcion}</p>
         <p className="precio">${precio}</p>
 
-        <form className="formulario">
+        <form className="formulario" onSubmit={handleSubmit}>
           <label htmlFor="cantidad">Cantidad:</label>
-          <select id="cantidad">
+          <select id="cantidad" onChange={(e) => setCantidad(+e.target.value)}>
             <option value="0">-- Seleccione --</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -62,5 +85,7 @@ function Guitarra() {
     </div>
   );
 }
+
+// +event.target.value convierte el string a number, también se puede usar Number(event.target.value) o parseInt(event.target.value)
 
 export default Guitarra;
