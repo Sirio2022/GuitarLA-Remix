@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { useLoaderData, useOutletContext } from '@remix-run/react';
 import { getGuitarra } from '~/models/guitarras.server';
 

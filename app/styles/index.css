@@ -126,6 +126,7 @@ main {
 @media (min-width: 768px) {
     .footer .navegacion {
         flex-direction: row;
+        
     }
 }
 
